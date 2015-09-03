@@ -24,7 +24,11 @@ class BlogPageTag(TaggedItemBase):
 class BlogPage(Page):
     content = RichTextField()
     author = models.ForeignKey(
-        settings.WAGTAIL_BLOG_AUTHOR_PAGE, blank=True, null=True)
+        settings.WAGTAIL_BLOG_AUTHOR_PAGE,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL
+    )
 
     image = models.ForeignKey(
         'wagtailimages.Image',
